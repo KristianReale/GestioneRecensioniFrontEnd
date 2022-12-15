@@ -1,0 +1,25 @@
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Titolo</th>
+        <th scope="col">Testo</th>
+        <th scope="col">Numero Mi Piace</th>
+        <th scope="col">Numero Non Mi Piace</th>
+        <th scope="col">Scritta da</th>
+        <th scope="col">Ristorante</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let rec of recensioni">
+            <td>{{rec.id}}</td>
+            <td>{{rec.titolo}}</td>
+            <td>{{rec.testo}}</td>
+            <td>{{rec.numeroMiPiace}}</td>
+            <td>{{rec.numeroNonMiPiace}}</td>
+            <td>{{rec.scrittaDa.nome}} {{rec.scrittaDa.cognome}}</td>
+            <td>{{rec.ristorante.nome}}</td>
+        
+          </tr>
+    </tbody>
+</table>
