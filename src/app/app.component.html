@@ -1,3 +1,8 @@
-<h2>{{title}}</h2>
-<a routerLink="visualizzarecensioni">Visualizza Recensioni</a>
-<router-outlet></router-outlet>
+<div *ngIf="isLogged === true">
+    <h2>{{title}}</h2>
+    <a routerLink="visualizzarecensioni" [queryParams]="{jsessionid: sessionId}">Visualizza Recensioni</a>
+    <router-outlet></router-outlet>
+</div>
+<div *ngIf="isLogged === false">
+    <p>Mi dispiace non sei autorizzato</p>
+</div>

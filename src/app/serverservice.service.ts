@@ -8,13 +8,27 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ServerserviceService {
-  private url : string = "http://localhost:8080/dammiRecensioni";
+  private url : string = "http://localhost:8080";
 
   constructor(private http: HttpClient) { }
 
-  getRecensioni(): Observable<Recensione[]>{
-    var recensioni : Observable<Recensione []> = this.http.get<Recensione []>(this.url);
+  editRecensione(jsessionid: string, rec: Recensione): Observable<Boolean>{
+    return this.http.post<Boolean>(this.url + "/editRecensione?jsessionid=" + jsessionid, rec);
+  }
+
+  deleteRecensione(jsessionid: string, idRec: BigInt): Observable<Boolean>{
+    return this.http.post<Boolean>(this.url + "/deleteRecensione?jsessionid=" + jsessionid, {idRecensione: idRec});
+  }
+
+  getRecensioni(jsessionid: string): Observable<Recensione[]>{
+    var recensioni : Observable<Recensione []> = this.http.post<Recensione []>(this.url + "/dammiRecensioni?jsessionid=" + jsessionid, {});
     return recensioni;
+  }
+
+  checkLogin(jsessionid: string): Observable<Boolean>{
+    //let queryParams = new HttpParams();
+    //queryParams.append("jsessionid", jsessionid);
+    return this.http.get<Boolean>(this.url + "/checkAuth", {params: {jsessionid: jsessionid}});
   }
 
 }

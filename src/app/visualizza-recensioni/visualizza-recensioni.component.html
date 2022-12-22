@@ -19,7 +19,10 @@
             <td>{{rec.numeroNonMiPiace}}</td>
             <td>{{rec.scrittaDa.nome}} {{rec.scrittaDa.cognome}}</td>
             <td>{{rec.ristorante.nome}}</td>
-        
+
+            <td><input class="btn btn-primary" type="button" value="Edit" (click)="edit(rec)"/></td>
+            <td><input class="btn btn-danger" type="button" value="Delete" (click)="delete(rec.id)"/></td>
           </tr>
     </tbody>
 </table>
+<app-form-edit [jsessionid]="sessionId" [recens]="recensioneToEdit" ></app-form-edit>

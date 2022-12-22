@@ -1,0 +1,11 @@
+<p>Modifica elemento</p>
+<div *ngIf="recens != null">
+    ID: <span>{{recens.id}}</span><br/>
+    <label for="recTitolo">Titolo</label>
+    <input type="text" id="recTitolo" name="titolo" [(ngModel)]="recens.titolo"/>
+    <br/>
+    <label for="recTitolo">Testo</label>
+    <input type="text" id="recTesto" name="testo" [(ngModel)]="recens.testo" />
+    <br/>
+    <input type="button" value="Salva" (click)="saveEdit(recens)" />
+</div>
